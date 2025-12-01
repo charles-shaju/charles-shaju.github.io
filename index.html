@@ -6,27 +6,348 @@
     <title>Charles Shaju | Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
     <canvas id="bg-canvas" aria-hidden="true"></canvas>
-    <main class="content">
-        <div class="intro-grid">
-            <header class="intro-copy">
-                <p class="eyebrow">Embedded Systems Engineer</p>
-                <h1>Charles Shaju</h1>
-                <p class="lead">Building intelligent embedded systems, resilient IoT networks, and autonomous robotics with AI-first thinking.</p>
-            </header>
-            <div class="intro-icon">
-                <div class="lottie-slot" id="lottie-hero" aria-hidden="true">
-                    <span class="lottie-fallback">AI · Robotics</span>
+    <div class="page-shell">
+        <header class="site-header glass-card">
+            <div class="brand-mark">CS</div>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#skills">Skills</a>
+                <a href="#certificates">Certificates</a>
+                <a href="#blog">Blog</a>
+                <a href="#resume">Resume</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a class="btn btn-hero btn-header" href="#contact">Let's Connect</a>
+        </header>
+        <main class="page-content">
+            <section class="hero-card glass-card" id="home">
+                <div class="intro-grid">
+                    <div class="intro-icon">
+                        <div class="lottie-slot portrait-frame" id="lottie-hero" data-animation="">
+                            <img class="portrait-image" src="assets/media/Charles-Shaju.jpeg" alt="Portrait of Charles Shaju" loading="lazy">
+                        </div>
+                    </div>
+                    <header class="intro-copy">
+                        <span class="role-tag">Embedded Systems Engineer</span>
+                        <h1 class="hero-name">Hi, I'm <span>Charles Shaju</span></h1>
+                        <p class="hero-subtitle">Embedded Systems Engineer | AI Enthusiast | Robotics Innovator</p>
+                        <ul class="meta-badges" role="list">
+                            <li>AI Systems Integration</li>
+                            <li>Marine Autonomy</li>
+                            <li>Sensor Fusion</li>
+                            <li>Real-time Systems</li>
+                        </ul>
+                        <div class="hero-infobar">
+                            <article class="info-card">
+                                <h3>Location</h3>
+                                <p>Thrissur, Kerala</p>
+                            </article>
+                            <article class="info-card">
+                                <h3>Expertise</h3>
+                                <p>Embedded Systems · AI · Robotics</p>
+                            </article>
+                            <article class="info-card">
+                                <h3>Contact</h3>
+                                <p>charlesshaju00@gmail.com</p>
+                            </article>
+                        </div>
+                        <div class="cta-group">
+                            <a class="btn btn-outline-light btn-hero" href="#projects">View Projects</a>
+                            <a class="btn btn-hero-secondary" href="#contact">Let’s Collaborate</a>
+                        </div>
+                    </header>
                 </div>
-            </div>
-        </div>
-    </main>
+                <div class="hero-footer">
+                    <div class="hero-connect">
+                        <p>Connect with me</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/charles-shaju/" aria-label="LinkedIn" target="_blank" rel="noopener">
+                                <img class="social-icon" src="assets/media/linkedin.png" alt="">
+                            </a>
+                            <a href="mailto:charlesshaju00@gmail.com" aria-label="Email">
+                                <img class="social-icon" src="assets/media/Gmail.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-activity">
+                        <p>See what I'm building</p>
+                        <div class="activity-icons">
+                            <a href="https://github.com/charles-shaju" aria-label="GitHub" target="_blank" rel="noopener">
+                                <img class="social-icon" src="assets/media/github.png" alt="">
+                            </a>
+                            <a href="https://charles-shaju.medium.com/" aria-label="Medium" target="_blank" rel="noopener">
+                                <img class="social-icon" src="assets/media/medium.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects-section glass-card" id="projects">
+                <div class="section-header">
+                    <span class="section-kicker">🚀 Projects</span>
+                    <h2 class="section-title">Flagship Work</h2>
+                    <p class="section-subtitle">A preview of embedded, IoT, and autonomy projects. Replace with your live details.</p>
+                </div>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <img class="project-thumb" src="assets/media/UROV.jpeg" alt="Underwater ROV inspecting submerged structure">
+                        <h3>Underwater Remotely Operated Vehicle</h3>
+                        <p class="project-copy">ROV platform that surveys dam walls, bridge pilings, and submerged infrastructure for cracks using Pixhawk guidance, embedded control loops, and multi-camera vision.</p>
+                    </article>
+                    <article class="project-card">
+                        <img class="project-thumb" src="assets/media/Catamaran.jpeg" alt="Autonomous AquaScanner catamaran performing bathymetry scan">
+                        <h3>AquaScanner Bathymetry Catamaran</h3>
+                        <p class="project-copy">Autonomous twin-hull vessel that deploys an embedded echosounder suite to chart dam reservoirs and inland waterways for structural assessment and sediment mapping.</p>
+                    </article>
+                    <article class="project-card">
+                        <h3>Smart Altimeter Module</h3>
+                        <p class="project-copy">Prototype high-precision barometric altimeter with auto/manual calibration routines, onboard data logging, and telemetry streaming for UAV telemetry stacks.</p>
+                    </article>
+                    <article class="project-card">
+                        <h3>Realtime GPS Tracker with Firebase</h3>
+                        <p class="project-copy">Portable tracker that streams GNSS fixes from an ESP32-based board to Firebase for live fleet monitoring, push alerts, and historical route analytics.</p>
+                    </article>
+                    <article class="project-card">
+                        <h3>Voice Assistant with NeuralIntents</h3>
+                        <p class="project-copy">Hands-free assistant that parses wake words, routes intents through a NeuralIntents flow, and speaks responses for home automation and productivity prompts.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="gallery-section glass-card" id="gallery">
+                <div class="section-header">
+                    <span class="section-kicker">🖼 Gallery</span>
+                    <h2 class="section-title">Build Journals</h2>
+                </div>
+                <div class="filter-row">
+                    <button class="filter-chip" type="button">All</button>
+                    <button class="filter-chip" type="button">Lab</button>
+                    <button class="filter-chip" type="button">Marine</button>
+                    <button class="filter-chip" type="button">Awards</button>
+                </div>
+                <div class="gallery-grid">
+                    <figure class="gallery-card">
+                        <div class="gallery-thumb">Image Placeholder</div>
+                        <figcaption>Signal lab bench capture workflow.</figcaption>
+                    </figure>
+                    <figure class="gallery-card">
+                        <div class="gallery-thumb">Image Placeholder</div>
+                        <figcaption>Dock-side autonomy test shot.</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="skills-section glass-card" id="skills">
+                <div class="section-header">
+                    <span class="section-kicker">🧠 Skills</span>
+                    <h2 class="section-title">Core Capabilities</h2>
+                    <p class="section-subtitle">Blend of embedded engineering, robotics, and AI tooling.</p>
+                </div>
+                <div class="skills-bubbles">
+                    <span>Embedded C</span>
+                    <span>RTOS</span>
+                    <span>Python</span>
+                    <span>ROS2</span>
+                    <span>FPGA</span>
+                    <span>Edge AI</span>
+                    <span>LoRa</span>
+                    <span>CAN</span>
+                    <span>PCB</span>
+                    <span>SLAM</span>
+                </div>
+                <div class="skills-categories">
+                    <article>
+                        <h3>Programming</h3>
+                        <ul>
+                            <li>C / C++</li>
+                            <li>Rust</li>
+                            <li>Python</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>Platforms</h3>
+                        <ul>
+                            <li>STM32</li>
+                            <li>Jetson</li>
+                            <li>ESP32</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>Tools</h3>
+                        <ul>
+                            <li>Zephyr RTOS</li>
+                            <li>Docker</li>
+                            <li>Grafana</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <h3>Specialty</h3>
+                        <ul>
+                            <li>Signal Processing</li>
+                            <li>Autonomy</li>
+                            <li>Systems Integration</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section class="certificates-section glass-card" id="certificates">
+                <div class="section-header">
+                    <span class="section-kicker">🏅 Certificates</span>
+                    <h2 class="section-title">Trusted Credentials</h2>
+                </div>
+                <div class="filter-row">
+                    <button class="filter-chip" type="button">Technical</button>
+                    <button class="filter-chip" type="button">Leadership</button>
+                </div>
+                <div class="certificate-grid">
+                    <article class="certificate-card">
+                        <h3>Advanced Embedded Systems</h3>
+                        <p class="certificate-meta">NPTEL · 2024</p>
+                        <a href="#">View</a>
+                    </article>
+                    <article class="certificate-card">
+                        <h3>Autonomous Robotics Lab</h3>
+                        <p class="certificate-meta">IIT Bombay · 2023</p>
+                        <a href="#">View</a>
+                    </article>
+                    <article class="certificate-card">
+                        <h3>Edge AI Deployment</h3>
+                        <p class="certificate-meta">NVIDIA · 2023</p>
+                        <a href="#">View</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="blog-section glass-card" id="blog">
+                <div class="section-header">
+                    <span class="section-kicker">📝 Blog</span>
+                    <h2 class="section-title">Field Notes</h2>
+                    <p class="section-subtitle">Reflections on marine robotics, embedded design, and systems thinking.</p>
+                </div>
+                <div class="blog-grid">
+                    <article class="blog-card">
+                        <h3>Designing Resilient Marine Networks</h3>
+                        <p>Notes on crafting dependable comms stacks for saltwater environments.</p>
+                        <div class="blog-actions"><span>👏 0</span><span>💬 0</span></div>
+                    </article>
+                    <article class="blog-card">
+                        <h3>When AI Meets Real-time</h3>
+                        <p>Balancing deterministic control with machine learning inference on constrained hardware.</p>
+                        <div class="blog-actions"><span>👏 0</span><span>💬 0</span></div>
+                    </article>
+                    <article class="blog-card">
+                        <h3>Operator-first Robotics UX</h3>
+                        <p>Designing dashboards that empower crews without overwhelming them.</p>
+                        <div class="blog-actions"><span>👏 0</span><span>💬 0</span></div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="resume-section glass-card" id="resume">
+                <div class="section-header">
+                    <span class="section-kicker">📄 Resume</span>
+                    <h2 class="section-title">Snapshot</h2>
+                </div>
+                <div class="resume-layout">
+                    <div class="resume-summary">
+                        <h3>Charles Shaju</h3>
+                        <p>MCA student and embedded systems engineer focused on autonomy, robotics, and marine technologies.</p>
+                        <ul class="resume-contact">
+                            <li>📍 Kochi, Kerala</li>
+                            <li>✉️ charles.shaju@example.com</li>
+                            <li>📞 +91 90000 00000</li>
+                        </ul>
+                    </div>
+                    <div class="resume-columns">
+                        <article>
+                            <h4>Education</h4>
+                            <ul>
+                                <li>MCA — 2023-2025</li>
+                                <li>BSc Computer Science — 2020-2023</li>
+                            </ul>
+                        </article>
+                        <article>
+                            <h4>Featured Projects</h4>
+                            <ul>
+                                <li>Smart Hull Diagnostics</li>
+                            </ul>
+                        </article>
+                        <article>
+                            <h4>Skills</h4>
+                            <div class="skill-tag-row">
+                                <span>Embedded C</span><span>Rust</span><span>Python</span><span>ROS2</span><span>Edge AI</span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="resume-footer">
+                    <a class="btn btn-outline-light btn-hero" href="#">Download CV</a>
+                    <div class="resume-links">
+                        <a href="#">LeetCode</a>
+                        <a href="#">GitHub</a>
+                        <a href="#">LinkedIn</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="about-section glass-card" id="about">
+                <div class="section-header">
+                    <span class="section-kicker">👋 About</span>
+                    <h2 class="section-title">Who I Am</h2>
+                </div>
+                <div class="about-body">
+                    <p>I'm Charles Shaju, an MCA student and part-time Embedded Systems Engineer at i4 Marine Technologies. With two years of hands-on experience, I focus on intelligent embedded systems, IoT devices, and autonomous marine technologies.</p>
+                    <p>Coming from a software background, I grew a passion for AI and robotics and enjoy integrating both into practical hardware solutions. That curiosity led me into designing sensors, microcontroller platforms, and embedded solutions that bridge software intelligence with physical hardware.</p>
+                    <p>I thrive on projects involving real-time systems, robotics, automation, underwater technologies, and AI-driven innovation. My goal is to advance intelligent hardware design while blending software, electronics, and machine learning to deliver smarter, more efficient systems.</p>
+                </div>
+            </section>
+
+            <section class="contact-section glass-card" id="contact">
+                <div class="section-header">
+                    <span class="section-kicker">🤝 Contact</span>
+                    <h2 class="section-title">Let's Collaborate</h2>
+                    <p class="section-subtitle">Tell me about your next embedded mission or robotics concept.</p>
+                </div>
+                <div class="contact-body">
+                    <div class="contact-social">
+                        <a href="mailto:charlesshaju00@gmail.com" aria-label="Email">
+                            <img class="social-icon" src="assets/media/Gmail.png" alt="">
+                        </a>
+                        <a href="https://x.com/charlesshaju" aria-label="X" target="_blank" rel="noopener">
+                            <img class="social-icon" src="assets/media/X.png" alt="">
+                        </a>
+                    </div>
+                    <form class="contact-form">
+                        <input type="text" name="name" placeholder="Your Name">
+                        <input type="email" name="email" placeholder="Your Email or Phone">
+                        <input type="text" name="subject" placeholder="Subject">
+                        <textarea name="message" rows="4" placeholder="Your Message..."></textarea>
+                        <button type="submit" class="btn btn-hero">Send Message</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer class="site-footer glass-card">
+            <p>© <span id="year"></span> Charles Shaju — Embedded Systems &amp; Robotics Engineer.</p>
+        </footer>
+    </div>
     <script src="assets/js/background.js"></script>
     <script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
     <script src="assets/js/lottie-init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
