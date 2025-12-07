@@ -40,7 +40,12 @@
                     </div>
                     <header class="intro-copy">
                         <span class="role-tag">Embedded Systems Engineer</span>
-                        <h1 class="hero-name">Hi, I'm <span>Charles Shaju</span></h1>
+                        <h1 class="hero-name">
+                            <span class="typing-wrapper" aria-label="Hi, I'm Charles Shaju">
+                                <span class="typing-text" data-text="Hi, I'm Charles Shaju">Hi, I'm Charles Shaju</span>
+                                <span class="typing-cursor" aria-hidden="true"></span>
+                            </span>
+                        </h1>
                         <p class="hero-subtitle">Embedded Systems Engineer | AI Enthusiast | Robotics Innovator</p>
                         <ul class="meta-badges" role="list">
                             <li>AI Systems Integration</li>
@@ -101,6 +106,35 @@
                     <p class="section-subtitle">A preview of embedded, IoT, and autonomy projects. Replace with your live details.</p>
                 </div>
                 <div class="project-grid">
+        
+        const typingWrapper = document.querySelector('.typing-wrapper');
+        const typingText = document.querySelector('.typing-text');
+        const typingCursor = document.querySelector('.typing-cursor');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (typingWrapper && typingText && typingCursor) {
+            const fullText = typingText.dataset.text || typingText.textContent.trim();
+
+            if (prefersReducedMotion) {
+                typingText.textContent = fullText;
+                typingCursor.remove();
+            } else {
+                typingText.textContent = '';
+                let charIndex = 0;
+
+                const typeNext = () => {
+                    if (charIndex <= fullText.length) {
+                        typingText.textContent = fullText.slice(0, charIndex);
+                        charIndex += 1;
+                        setTimeout(typeNext, 110);
+                    } else {
+                        typingCursor.classList.add('is-idle');
+                    }
+                };
+
+                typeNext();
+            }
+        }
                     <article class="project-card">
                         <img class="project-thumb" src="assets/media/UROV.jpeg" alt="Underwater ROV inspecting submerged structure">
                         <h3>Underwater Remotely Operated Vehicle</h3>
