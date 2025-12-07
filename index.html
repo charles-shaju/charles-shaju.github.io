@@ -41,8 +41,10 @@
                     <header class="intro-copy">
                         <span class="role-tag">Embedded Systems Engineer</span>
                         <h1 class="hero-name">
-                            <span class="typing-wrapper" aria-label="Hi, I'm Charles Shaju">
-                                <span class="typing-text" data-text="Hi, I'm Charles Shaju">Hi, I'm Charles Shaju</span>
+                            <span class="typing-wrapper" aria-label="Hi, I'm Charles Shaju" aria-live="polite">
+                                <span class="typing-text" data-text="Hi, I'm Charles Shaju" data-highlight-length="2">
+                                    <span class="typing-hi">Hi</span><span class="typing-rest">, I'm Charles Shaju</span>
+                                </span>
                                 <span class="typing-cursor" aria-hidden="true"></span>
                             </span>
                         </h1>
@@ -106,35 +108,6 @@
                     <p class="section-subtitle">A preview of embedded, IoT, and autonomy projects. Replace with your live details.</p>
                 </div>
                 <div class="project-grid">
-        
-        const typingWrapper = document.querySelector('.typing-wrapper');
-        const typingText = document.querySelector('.typing-text');
-        const typingCursor = document.querySelector('.typing-cursor');
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        if (typingWrapper && typingText && typingCursor) {
-            const fullText = typingText.dataset.text || typingText.textContent.trim();
-
-            if (prefersReducedMotion) {
-                typingText.textContent = fullText;
-                typingCursor.remove();
-            } else {
-                typingText.textContent = '';
-                let charIndex = 0;
-
-                const typeNext = () => {
-                    if (charIndex <= fullText.length) {
-                        typingText.textContent = fullText.slice(0, charIndex);
-                        charIndex += 1;
-                        setTimeout(typeNext, 110);
-                    } else {
-                        typingCursor.classList.add('is-idle');
-                    }
-                };
-
-                typeNext();
-            }
-        }
                     <article class="project-card">
                         <img class="project-thumb" src="assets/media/UROV.jpeg" alt="Underwater ROV inspecting submerged structure">
                         <h3>Underwater Remotely Operated Vehicle</h3>
@@ -199,6 +172,23 @@
                         <figcaption>ROV team coordinating hardware, software, and mission timelines together.</figcaption>
                     </figure>
                 </div>
+            </section>
+
+            <section class="patent-section glass-card" id="patent">
+                <div class="section-header">
+                    <span class="section-kicker">📄 Patent</span>
+                    <h2 class="section-title">UROV-SHM Publication</h2>
+                    <p class="section-subtitle">Indian Application No. 202241040473 A · Published 12 Jul 2024</p>
+                </div>
+                <article class="patent-card">
+                    <div class="patent-chip">Structural Health Monitoring</div>
+                    <h3>AN UNDERWATER REMOTELY OPERATED VEHICLE FOR STRUCTURAL HEALTH MONITORING (UROV-SHM)</h3>
+                    <ul class="patent-meta-list">
+                        <li><strong>Filed:</strong> 24 May 2024 · India</li>
+                    </ul>
+                    <p class="patent-abstract">UROV-SHM executes detailed underwater inspections of dams, tunnels, ship hulls, and bridge piers. Swappable batteries, fiber tethered telemetry, and AI-enhanced sonar/video analytics give real-time crack measurement, precise positioning, and mission resilience in turbulent conditions.</p>
+                    <p class="patent-note">Published in the Indian Patent Office journal.</p>
+                </article>
             </section>
 
             <section class="skills-section glass-card" id="skills">
@@ -353,7 +343,73 @@
     <script src="assets/js/lottie-init.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
+        const yearEl = document.getElementById('year');
+        if (yearEl) {
+            yearEl.textContent = new Date().getFullYear();
+        }
+
+        const typingWrapper = document.querySelector('.typing-wrapper');
+        const typingText = document.querySelector('.typing-text');
+        const typingCursor = document.querySelector('.typing-cursor');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const escapeHtml = (value = '') =>
+            value
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+
+        const renderTypedMarkup = (text, highlightLength, visibleCount) => {
+            if (!typingText) {
+                return;
+            }
+
+            const clampedCount = Math.min(visibleCount, text.length);
+            const activeHighlight = Math.min(highlightLength, clampedCount);
+            const highlightSlice = text.slice(0, activeHighlight);
+            const remainderSlice = text.slice(activeHighlight, clampedCount);
+
+            let html = '';
+
+            if (highlightSlice) {
+                html += `<span class="typing-hi">${escapeHtml(highlightSlice)}</span>`;
+            }
+
+            if (remainderSlice) {
+                html += `<span class="typing-rest">${escapeHtml(remainderSlice)}</span>`;
+            }
+
+            typingText.innerHTML = html;
+        };
+
+        if (typingWrapper && typingText && typingCursor) {
+            const fullText = (typingText.dataset.text || typingText.textContent || '').trim();
+            const highlightLength = parseInt(typingText.dataset.highlightLength || '0', 10);
+
+            if (!fullText) {
+                return;
+            }
+
+            if (prefersReducedMotion) {
+                renderTypedMarkup(fullText, highlightLength, fullText.length);
+                typingCursor.remove();
+            } else {
+                typingText.innerHTML = '';
+                let charIndex = 0;
+
+                const typeNext = () => {
+                    if (charIndex <= fullText.length) {
+                        renderTypedMarkup(fullText, highlightLength, charIndex);
+                        charIndex += 1;
+                        setTimeout(typeNext, 110);
+                    } else {
+                        typingCursor.classList.add('is-idle');
+                    }
+                };
+
+                typeNext();
+            }
+        }
     </script>
 </body>
 </html>
