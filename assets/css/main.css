@@ -1330,6 +1330,12 @@ body.nav-open .mobile-nav-panel {
         gap: 2.2rem;
         grid-template-columns: minmax(0, 1fr);
         text-align: center;
+        justify-items: center;
+    }
+
+    .intro-icon {
+        margin: 0 auto;
+        transform: none;
     }
 
     .intro-copy {
