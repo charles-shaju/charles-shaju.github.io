@@ -17,6 +17,11 @@
     <div class="page-shell">
         <header class="site-header glass-card">
             <div class="brand-mark">CS</div>
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false" data-nav-toggle>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
             <nav class="site-nav" aria-label="Primary">
                 <a href="#home">Home</a>
                 <a href="#projects">Projects</a>
@@ -30,6 +35,27 @@
             </nav>
             <a class="btn btn-hero btn-header" href="#contact">Let's Connect</a>
         </header>
+        <div class="mobile-nav-overlay" data-nav-overlay hidden></div>
+        <aside class="mobile-nav-panel" id="mobile-nav" aria-hidden="true">
+            <div class="mobile-nav-header">
+                <span class="mobile-nav-title">Navigate</span>
+                <button class="nav-close" type="button" aria-label="Close navigation" data-nav-close>
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <nav class="mobile-nav-menu" aria-label="Mobile primary navigation">
+                <a href="#home">Home</a>
+                <a href="#projects">Projects</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#skills">Skills</a>
+                <a href="#certificates">Certificates</a>
+                <a href="#blog">Blog</a>
+                <a href="#resume">Resume</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a class="btn btn-hero mobile-nav-cta" href="#contact">Let's Connect</a>
+        </aside>
         <main class="page-content">
             <section class="hero-card glass-card" id="home">
                 <div class="intro-grid">
@@ -410,6 +436,53 @@
                 typeNext();
             }
         }
+
+        const navToggle = document.querySelector('[data-nav-toggle]');
+        const navClose = document.querySelector('[data-nav-close]');
+        const navToggle = document.querySelector('[data-nav-toggle]');
+        const navClose = document.querySelector('[data-nav-close]');
+        const navOverlay = document.querySelector('[data-nav-overlay]');
+        const navPanel = document.getElementById('mobile-nav');
+        const navLinks = navPanel ? Array.from(navPanel.querySelectorAll('a')) : [];
+        const setNavState = (isOpen) => {
+        const navElementsReady = Boolean(navToggle && navOverlay && navPanel);
+            if (isOpen) {
+                document.body.classList.add('nav-open');
+            if (!navElementsReady) {
+                return;
+            }
+
+                navPanel?.setAttribute('aria-hidden', 'false');
+                navToggle?.setAttribute('aria-expanded', 'true');
+                navOverlay?.removeAttribute('hidden');
+            } else {
+                document.body.classList.remove('nav-open');
+                navPanel?.setAttribute('aria-hidden', 'true');
+                navToggle?.setAttribute('aria-expanded', 'false');
+                navOverlay?.setAttribute('hidden', '');
+            }
+        };
+
+        navToggle?.addEventListener('click', () => {
+            const isOpen = document.body.classList.contains('nav-open');
+        if (navElementsReady) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = document.body.classList.contains('nav-open');
+                setNavState(!isOpen);
+            });
+
+            navClose?.addEventListener('click', () => setNavState(false));
+            navOverlay?.addEventListener('click', () => setNavState(false));
+            navLinks.forEach((link) => link.addEventListener('click', () => setNavState(false)));
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    setNavState(false);
+                }
+            });
+        }
+        desktopBreakpoint.addEventListener('change', (event) => {
+        });
     </script>
 </body>
 </html>
