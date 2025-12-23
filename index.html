@@ -439,40 +439,41 @@
 
         const navToggle = document.querySelector('[data-nav-toggle]');
         const navClose = document.querySelector('[data-nav-close]');
-        const navToggle = document.querySelector('[data-nav-toggle]');
-        const navClose = document.querySelector('[data-nav-close]');
         const navOverlay = document.querySelector('[data-nav-overlay]');
         const navPanel = document.getElementById('mobile-nav');
         const navLinks = navPanel ? Array.from(navPanel.querySelectorAll('a')) : [];
-        const setNavState = (isOpen) => {
+        const desktopBreakpoint = window.matchMedia('(min-width: 861px)');
         const navElementsReady = Boolean(navToggle && navOverlay && navPanel);
-            if (isOpen) {
-                document.body.classList.add('nav-open');
+
+        const setNavState = (isOpen) => {
             if (!navElementsReady) {
                 return;
             }
 
-                navPanel?.setAttribute('aria-hidden', 'false');
-                navToggle?.setAttribute('aria-expanded', 'true');
-                navOverlay?.removeAttribute('hidden');
+            if (isOpen) {
+                document.body.classList.add('nav-open');
+                navPanel.setAttribute('aria-hidden', 'false');
+                navToggle.setAttribute('aria-expanded', 'true');
+                navOverlay.removeAttribute('hidden');
             } else {
                 document.body.classList.remove('nav-open');
-                navPanel?.setAttribute('aria-hidden', 'true');
-                navToggle?.setAttribute('aria-expanded', 'false');
-                navOverlay?.setAttribute('hidden', '');
+                navPanel.setAttribute('aria-hidden', 'true');
+                navToggle.setAttribute('aria-expanded', 'false');
+                navOverlay.setAttribute('hidden', '');
             }
         };
 
-        navToggle?.addEventListener('click', () => {
-            const isOpen = document.body.classList.contains('nav-open');
         if (navElementsReady) {
             navToggle.addEventListener('click', () => {
                 const isOpen = document.body.classList.contains('nav-open');
                 setNavState(!isOpen);
             });
 
-            navClose?.addEventListener('click', () => setNavState(false));
-            navOverlay?.addEventListener('click', () => setNavState(false));
+            if (navClose) {
+                navClose.addEventListener('click', () => setNavState(false));
+            }
+
+            navOverlay.addEventListener('click', () => setNavState(false));
             navLinks.forEach((link) => link.addEventListener('click', () => setNavState(false)));
 
             document.addEventListener('keydown', (event) => {
@@ -481,7 +482,11 @@
                 }
             });
         }
+
         desktopBreakpoint.addEventListener('change', (event) => {
+            if (event.matches) {
+                setNavState(false);
+            }
         });
     </script>
 </body>
