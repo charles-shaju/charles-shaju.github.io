@@ -437,29 +437,8 @@ body.nav-open .mobile-nav-panel {
     text-shadow: 0 22px 44px rgba(4, 8, 7, 0.55), 0 0 22px rgba(125, 240, 198, 0.28);
 }
 
-.hero-name .typing-wrapper {
-    color: var(--text-primary);
-}
-
-.typing-wrapper {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.2rem;
-    position: relative;
-}
-
-.typing-text {
-    display: inline-block;
-    white-space: nowrap;
-    color: inherit;
-}
-
-.typing-text .typing-hi {
+.hero-name .hero-hi {
     color: var(--accent);
-}
-
-.typing-text .typing-rest {
-    color: var(--text-primary);
 }
 
 .typing-cursor {
@@ -1430,6 +1409,15 @@ body.nav-open .mobile-nav-panel {
         width: 96px;
         height: 96px;
         font-size: 0.7rem;
+    }
+
+    .intro-icon {
+        margin: 0 auto;
+        transform: none;
+    }
+
+    .intro-grid {
+        justify-items: center;
     }
 }
 
