@@ -437,33 +437,33 @@
             }
         }
 
-        const navToggle = document.querySelector('[data-nav-toggle]');
-        const navClose = document.querySelector('[data-nav-close]');
-        const navOverlay = document.querySelector('[data-nav-overlay]');
-        const navPanel = document.getElementById('mobile-nav');
-        const navLinks = navPanel ? Array.from(navPanel.querySelectorAll('a')) : [];
-        const desktopBreakpoint = window.matchMedia('(min-width: 861px)');
-        const navElementsReady = Boolean(navToggle && navOverlay && navPanel);
+        (() => {
+            const navToggle = document.querySelector('[data-nav-toggle]');
+            const navClose = document.querySelector('[data-nav-close]');
+            const navOverlay = document.querySelector('[data-nav-overlay]');
+            const navPanel = document.getElementById('mobile-nav');
+            const desktopBreakpoint = window.matchMedia('(min-width: 861px)');
 
-        const setNavState = (isOpen) => {
-            if (!navElementsReady) {
+            if (!navToggle || !navOverlay || !navPanel) {
                 return;
             }
 
-            if (isOpen) {
-                document.body.classList.add('nav-open');
-                navPanel.setAttribute('aria-hidden', 'false');
-                navToggle.setAttribute('aria-expanded', 'true');
-                navOverlay.removeAttribute('hidden');
-            } else {
-                document.body.classList.remove('nav-open');
-                navPanel.setAttribute('aria-hidden', 'true');
-                navToggle.setAttribute('aria-expanded', 'false');
-                navOverlay.setAttribute('hidden', '');
-            }
-        };
+            const navLinks = Array.from(navPanel.querySelectorAll('a'));
 
-        if (navElementsReady) {
+            const setNavState = (isOpen) => {
+                if (isOpen) {
+                    document.body.classList.add('nav-open');
+                    navPanel.setAttribute('aria-hidden', 'false');
+                    navToggle.setAttribute('aria-expanded', 'true');
+                    navOverlay.removeAttribute('hidden');
+                } else {
+                    document.body.classList.remove('nav-open');
+                    navPanel.setAttribute('aria-hidden', 'true');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                    navOverlay.setAttribute('hidden', '');
+                }
+            };
+
             navToggle.addEventListener('click', () => {
                 const isOpen = document.body.classList.contains('nav-open');
                 setNavState(!isOpen);
@@ -481,13 +481,13 @@
                     setNavState(false);
                 }
             });
-        }
 
-        desktopBreakpoint.addEventListener('change', (event) => {
-            if (event.matches) {
-                setNavState(false);
-            }
-        });
+            desktopBreakpoint.addEventListener('change', (event) => {
+                if (event.matches) {
+                    setNavState(false);
+                }
+            });
+        })();
     </script>
 </body>
 </html>
